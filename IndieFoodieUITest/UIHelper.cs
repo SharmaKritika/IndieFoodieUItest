@@ -3,11 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace IndieFoodieUITest
 {
@@ -15,12 +11,13 @@ namespace IndieFoodieUITest
     {
         static ChromeDriver driver = new ChromeDriver();
 
-        static WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-        
+        static WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(90));
+
+        static readonly string Url = "http://indiefoodie.azurewebsites.net/";
 
         public static void NavigateToRestaurantSearch()
         {
-            driver.Navigate().GoToUrl("http://localhost/");
+            driver.Navigate().GoToUrl(Url);
             wait.Until(driver => driver.FindElement(By.LinkText("Restaurants")).Displayed);
             driver.FindElementByLinkText("Restaurants").Click();
         }
